@@ -14,8 +14,4 @@ Si ya se ha generado un build de producción anteriormente y se desean ejecutar 
 
 ## Licencia
 
-<<<<<<< HEAD
 Todos los derechos de la aplicación Formularios Rastre Satelital le perteneces a la empresa Rastreo Satelital `https://www.rastreo.co`
-=======
-Todos los derechos de la aplicación Formularios Rastre Satelital le perteneces a la empresa Rastreo Satelital `https://www.rastreo.co`
->>>>>>> 48b32eb74c38e8df81b327c87591fe7266a50bc2
