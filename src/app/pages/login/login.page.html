@@ -1,0 +1,36 @@
+<ion-content class="ion-padding fondo" [fullscreen]="true">
+	<div id="container" class="ion-padding">
+		<ion-slides class="mainSlide" #slidePrincipal mode="ios" pager="ios" scrollbar="ios">
+			<ion-slide>
+				<div class="imagen-superior">
+					<ion-img
+					src="/assets/rastreo_logo.png"
+					></ion-img>
+				</div>
+				<form (ngSubmit)="iniciarSesion()" #loginForm="ngForm" style="margin-top: 4rem;">
+					<ion-grid fixed>
+						<ion-row>
+							<ion-col size="12">
+								<ion-label class="label-input">Correo electrónico <span class="required">*</span></ion-label>
+								<ion-input class="input-form" type="email" placeholder="Ingrese su correo electrónico" name="email" [(ngModel)]="credenciales.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></ion-input>
+							</ion-col>
+						</ion-row>
+						<ion-row class="ion-margin-top">
+							<ion-col size="12">
+								<ion-label class="label-input">Contraseña <span class="required">*</span></ion-label>
+								<ion-input class="input-form" type="password" placeholder="Ingrese su contraseña" name="password" [(ngModel)]="credenciales.password" #password="ngModel" required></ion-input>
+							</ion-col>
+						</ion-row>
+						<ion-row style="margin-top: 4rem;">
+							<ion-col size="12" class="ion-text-right">
+							<ion-button type="submit" shape="round" color="rastreo-primary" expand="full">
+								Ingresar
+							</ion-button>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</form>
+			</ion-slide>
+		</ion-slides>
+	</div>
+</ion-content>

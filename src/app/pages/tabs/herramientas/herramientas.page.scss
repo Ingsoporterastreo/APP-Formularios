@@ -1,0 +1,24 @@
+.fondo-header {
+    background: url(/assets/setting_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h5 {
+    font-size: 28px;
+    margin: 40px;
+}
+
+.avatar-position {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.color-oculto {
+    color: #C1C1C1;
+}
+
+form ion-item {
+    --border-style: none !important;
+}

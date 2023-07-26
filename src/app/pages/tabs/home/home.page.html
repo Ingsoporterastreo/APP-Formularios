@@ -1,0 +1,27 @@
+<app-principal-header></app-principal-header>
+
+<ion-content *ngIf="inspecciones">
+  <ion-card color="rastreo-primary" style="margin-top: 1rem;">
+    <ion-card-header>
+      <ion-card-title class="titulo-principal">{{ global_service.obtenerNombreSemana( fecha_actual.getDay() )}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>{{ global_service.obtenerNombreMes( fecha_actual.getMonth() )}} {{ fecha_actual.getDate() }}, {{ fecha_actual.getFullYear() }}</p>
+      <p>Inscripciones vigentes</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list class="ion-padding">
+    <ion-item *ngFor="let item of inspecciones" routerLink="{{ '/main/tabs/inspeccion/' + item.id }}">
+      <ion-thumbnail slot="start">
+        <h3>{{ item.id }}</h3>
+      </ion-thumbnail>
+      <ion-label>
+        <h4 class="ion-text-uppercase">{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>

@@ -1,0 +1,116 @@
+<ion-header class="fondo-header">
+	<app-image-header></app-image-header>
+
+	<ion-text color="light" class="ion-text-center">
+		<h5>Herramientas</h5>
+	</ion-text>
+
+	<ion-segment value="general" (ionChange)="segmentChanged($event)" scrollable mode="md" color="light">
+		<ion-segment-button value="general" class="color-oculto">
+			<ion-label>GENERAL</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="alertas" class="color-oculto">
+			<ion-label>ALERTAS</ion-label>
+		</ion-segment-button>
+	</ion-segment>
+</ion-header>
+
+<ion-content *ngIf="usuario">
+  <form (ngSubmit)="onSubmitGeneral()" #generalForm="ngForm" mode="ios" style="margin-top: 2rem;" *ngIf="herramientas == 'general'">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-item class="ion-no-border" no-lines>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-input
+              type="text"
+              color="light"
+              fill="solid"
+              label="Nombre completo"
+              labelPlacement="floating"
+              errorText="Por favor, ingrese su nombre completo"
+              name="nombre_completo"
+              [(ngModel)]="usuario.name"
+              #nombre_completo="ngModel"
+              pattern="[a-zA-ZÀ-ÿ ]+"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-item>
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input
+              type="email"
+              color="light"
+              fill="solid"
+              label="Correo electrónico"
+              labelPlacement="floating"
+              errorText="Por favor, ingrese un correo electrónico válido"
+              name="correo_electronico"
+              [(ngModel)]="usuario.email"
+              #correo_electronico="ngModel"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-item>
+            <ion-icon name="pin-outline" slot="start"></ion-icon>
+            <ion-input
+              type="text"
+              color="light"
+              fill="solid"
+              label="Dirección"
+              labelPlacement="floating"
+              errorText="Por favor, ingrese la dirección"
+              name="direccion"
+              [(ngModel)]="usuario.address"
+              #direccion="ngModel"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-item>
+            <ion-icon name="call-outline" slot="start"></ion-icon>
+            <ion-input
+              type="text"
+              color="light"
+              fill="solid"
+              label="Teléfono"
+              labelPlacement="floating"
+              errorText="Por favor, ingrese el número de telefono"
+              name="telefono"
+              [(ngModel)]="usuario.phone"
+              #password="ngModel"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 2rem;">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button type="submit" shape="round" color="rastreo-primary" (click)="cerrarSesion()">
+            Cerrar Sesión
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <div *ngIf="herramientas == 'alertas'" class="ion-padding">
+	<ion-list>
+		<ion-item class="ion-margin-top">
+			<ion-toggle color="rastreo-primary" [checked]="true">Nuevo Formulario</ion-toggle>
+		</ion-item>
+		<ion-item class="ion-margin-top">
+			<ion-toggle color="rastreo-primary" [checked]="true">Noticias</ion-toggle>
+		</ion-item>
+		<ion-item class="ion-margin-top">
+			<ion-toggle color="rastreo-primary" [checked]="true">Actualizaciones</ion-toggle>
+		</ion-item>
+	</ion-list>
+  </div>
+</ion-content>

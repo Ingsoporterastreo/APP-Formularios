@@ -1,3 +1,28 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="principal_menu" menuId="principal_menu" side="start" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Sin avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label *ngIf="usuario">
+            <h5>{{ usuario.name }}</h5>
+            <p>{{ usuario.email }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle *ngFor="let opcion of opciones_menu | async" autoHide="false">
+          <ion-item [routerLink]="opcion.url" detail>
+            <ion-icon slot="start" color="primary" name="{{ opcion.icon }}"></ion-icon>
+            <ion-label color="primary">{{ opcion.name }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="principal_menu"></ion-router-outlet>
 </ion-app>

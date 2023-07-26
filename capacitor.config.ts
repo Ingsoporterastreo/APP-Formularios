@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'formularios',
+  appId: 'co.rastreo.formularios',
+  appName: 'Formularios Rastre Satelital',
   webDir: 'www',
   server: {
     androidScheme: 'https'

@@ -1,0 +1,215 @@
+<ion-header class="fondo-header">
+	<app-image-header></app-image-header>
+
+	<ion-text color="light" class="ion-text-center">
+		<h5>Alistamiento Preoperacional Diario</h5>
+		<p>Complete las preguntas</p>
+	</ion-text>
+</ion-header>
+<ion-content *ngIf="preguntas">
+	<ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="onSubmit()">
+		<ion-fab-button>
+			<ion-icon name="save-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+	<form (ngSubmit)="onSubmit()" #generalForm="ngForm" mode="ios" style="margin-top: -16px;">
+		<ion-grid fixed class="ion-no-padding" *ngFor="let key of keys">
+			<ion-row>
+				<ion-col size="12" class="ion-text-center">
+					<h6>{{ key }}</h6>
+					<ion-item class="ion-no-border" no-lines *ngFor="let pregunta of preguntas[key]">
+						<ng-container *ngIf="pregunta.type == 'Input'">
+							<ion-input
+								type="{{ pregunta.type }}"
+								color="light"
+								fill="solid"
+								label="{{ pregunta.title }}"
+								labelPlacement="floating"
+								errorText="Por favor, llene el campo"
+								name="{{ 'text' + pregunta.id }}"
+								[(ngModel)]="pregunta.respuesta"
+								requried
+							></ion-input>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'RadioButton'">
+							<ion-radio-group [allowEmptySelection]="false" name="{{ 'radio'+pregunta.id }}" [(ngModel)]="pregunta.respuesta" style="width: 100%;">
+								<p *ngIf="preguntas[key].length > 1" class="subtitle">{{ pregunta.title }}</p>
+								<ion-item class="ion-no-padding" *ngFor="let lista of pregunta.list">
+									<ion-radio value="{{ lista.value }}" justify="space-between">{{ lista.title }}</ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'Switch'">
+							<ion-toggle labelPlacement="start" color="rastreo-primary" name="{{ 'swtich'+pregunta.id }}" [(ngModel)]="pregunta.respuesta">{{ pregunta.title }}</ion-toggle><br /><br />
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'Checkbox'">
+							<ion-grid fixed>
+								<ion-row>
+									<ion-col size="12">
+										<p *ngIf="preguntas[key].length > 1" class="subtitle">{{ pregunta.title }}</p>
+									</ion-col>
+									<ion-col size="12" *ngFor="let lista of pregunta.list">
+										<ion-checkbox color="rastreo-primary" name="{{ 'checkbox'+pregunta.id+lista.title }}" [(ngModel)]="lista.respuesta">{{ lista.title }}</ion-checkbox>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'Date'">
+							<ion-label position="fixed" class="ion-text-wrap label-input" style="margin-left: 0;">{{ pregunta.title }}</ion-label>
+							<ion-datetime-button slot="end" datetime="fecha_nacimiento"></ion-datetime-button>
+							<ion-modal [keepContentsMounted]="true">
+								<ng-template>
+									<ion-datetime id="fecha_nacimiento" [showDefaultButtons]="true" name="{{ 'fecha'+pregunta.id }}" [(ngModel)]="pregunta.respuesta" presentation="date" display-format="DD MMMM YYYY"></ion-datetime>
+								</ng-template>
+							</ion-modal>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'File'">
+							<ion-grid fixed style="padding: 24px 0 11px 0;">
+								<ion-row>
+									<ion-col size="6">
+										<ion-label position="fixed" class="ion-text-wrap label-input" style="margin-left: 0;">{{ pregunta.title }}</ion-label>
+									</ion-col>
+									<ion-col size="6" class="ion-text-right">
+										<ion-button (click)="seleccionarFotoGaleria( pregunta )" shape="round">
+											Adjuntar Foto
+										</ion-button>
+									</ion-col>
+									<ion-col size="12" class="ion-text-right" *ngIf="pregunta.respuesta">
+										<p class="imagen-cargada">Se ha seleccionado correctamente la imágen</p>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'Number'">
+							<ion-input
+								type="number"
+								color="light"
+								fill="solid"
+								label="{{ pregunta.title }}"
+								labelPlacement="floating"
+								errorText="Por favor, llene el campo"
+								name="{{ 'number' + pregunta.id }}"
+								[(ngModel)]="pregunta.respuesta"
+								requried
+							></ion-input>
+						</ng-container>
+						<ng-container *ngIf="pregunta.type == 'Draw'">
+							<ion-grid fixed style="padding: 24px 0 11px 0;">
+								<ion-row>
+									<ion-col size="6">
+										<ion-label position="fixed" class="ion-text-wrap label-input" style="margin-left: 0;">{{ pregunta.title }}</ion-label>
+									</ion-col>
+									<ion-col size="6" class="ion-text-right">
+										<ion-button (click)="abrirModalFirma()" shape="round">Firmar</ion-button>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</ng-container>
+						<ng-container>
+						</ng-container>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-grid fixed class="ion-no-padding">
+			<ion-row *ngIf="imagen_firma">
+				<ion-col size="12" class="ion-text-center">
+					<h6>Firma</h6>
+				</ion-col>
+				<ion-col size="6">
+				</ion-col>
+				<ion-col size="6">
+					<img src="{{ imagen_firma }}" style="width: 100%">
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
+</ion-content>
+  
+  <!-- <ion-content *ngIf="usuario">
+	<form (ngSubmit)="onSubmitGeneral()" #generalForm="ngForm" mode="ios" style="margin-top: 2rem;">
+	  <ion-grid fixed>
+		<ion-row>
+		  <ion-col size="12" class="ion-text-left">
+			<ion-item class="ion-no-border" no-lines>
+			  <ion-icon name="person-outline" slot="start"></ion-icon>
+			  <ion-input
+				type="text"
+				color="light"
+				fill="solid"
+				label="Nombre completo"
+				labelPlacement="floating"
+				errorText="Por favor, ingrese su nombre completo"
+				name="nombre_completo"
+				[(ngModel)]="usuario.name"
+				#nombre_completo="ngModel"
+				pattern="[a-zA-ZÀ-ÿ ]+"
+			  ></ion-input>
+			</ion-item>
+		  </ion-col>
+		</ion-row>
+		<ion-row>
+		  <ion-col size="12" class="ion-text-left">
+			<ion-item>
+			  <ion-icon name="mail-outline" slot="start"></ion-icon>
+			  <ion-input
+				type="email"
+				color="light"
+				fill="solid"
+				label="Correo electrónico"
+				labelPlacement="floating"
+				errorText="Por favor, ingrese un correo electrónico válido"
+				name="correo_electronico"
+				[(ngModel)]="usuario.email"
+				#correo_electronico="ngModel"
+			  ></ion-input>
+			</ion-item>
+		  </ion-col>
+		</ion-row>
+		<ion-row>
+		  <ion-col size="12" class="ion-text-left">
+			<ion-item>
+			  <ion-icon name="pin-outline" slot="start"></ion-icon>
+			  <ion-input
+				type="text"
+				color="light"
+				fill="solid"
+				label="Dirección"
+				labelPlacement="floating"
+				errorText="Por favor, ingrese la dirección"
+				name="direccion"
+				[(ngModel)]="usuario.address"
+				#direccion="ngModel"
+			  ></ion-input>
+			</ion-item>
+		  </ion-col>
+		</ion-row>
+		<ion-row>
+		  <ion-col size="12" class="ion-text-left">
+			<ion-item>
+			  <ion-icon name="call-outline" slot="start"></ion-icon>
+			  <ion-input
+				type="text"
+				color="light"
+				fill="solid"
+				label="Teléfono"
+				labelPlacement="floating"
+				errorText="Por favor, ingrese el número de telefono"
+				name="telefono"
+				[(ngModel)]="usuario.phone"
+				#password="ngModel"
+			  ></ion-input>
+			</ion-item>
+		  </ion-col>
+		</ion-row>
+		<ion-row style="margin-top: 2rem;">
+		  <ion-col size="12" class="ion-text-center">
+			<ion-button type="submit" shape="round" color="rastreo-primary" (click)="cerrarSesion()">
+			  Cerrar Sesión
+			</ion-button>
+		  </ion-col>
+		</ion-row>
+	  </ion-grid>
+	</form>
+  </ion-content> -->
+  

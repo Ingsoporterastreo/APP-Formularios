@@ -74,6 +74,22 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+	// Color primario rastreo
+	--ion-color-rastreo-primary: #e1261c;
+	--ion-color-rastreo-primary-rgb: 225,38,28;
+	--ion-color-rastreo-primary-contrast: #ffffff;
+	--ion-color-rastreo-primary-contrast-rgb: 255,255,255;
+	--ion-color-rastreo-primary-shade: #c62119;
+	--ion-color-rastreo-primary-tint: #e43c33;
+
+	// Color secundario rastreo
+	--ion-color-rastreo-secondary: #646567;
+	--ion-color-rastreo-secondary-rgb: 100,101,103;
+	--ion-color-rastreo-secondary-contrast: #ffffff;
+	--ion-color-rastreo-secondary-contrast-rgb: 255,255,255;
+	--ion-color-rastreo-secondary-shade: #58595b;
+	--ion-color-rastreo-secondary-tint: #747476;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -145,6 +161,20 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+	--ion-color-rastreo-primary: #e1261c;
+	--ion-color-rastreo-primary-rgb: 225,38,28;
+	--ion-color-rastreo-primary-contrast: #ffffff;
+	--ion-color-rastreo-primary-contrast-rgb: 255,255,255;
+	--ion-color-rastreo-primary-shade: #c62119;
+	--ion-color-rastreo-primary-tint: #e43c33;
+
+	--ion-color-rastreo-secondary: #646567;
+	--ion-color-rastreo-secondary-rgb: 100,101,103;
+	--ion-color-rastreo-secondary-contrast: #ffffff;
+	--ion-color-rastreo-secondary-contrast-rgb: 255,255,255;
+	--ion-color-rastreo-secondary-shade: #58595b;
+	--ion-color-rastreo-secondary-tint: #747476;
   }
 
   /*
@@ -233,4 +263,22 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+.ion-color-rastreo-primary {
+	--ion-color-base: var(--ion-color-rastreo-primary) !important;
+	--ion-color-base-rgb: var(--ion-color-rastreo-primary-rgb) !important;
+	--ion-color-contrast: var(--ion-color-rastreo-primary-contrast) !important;
+	--ion-color-contrast-rgb: var(--ion-color-rastreo-primary-contrast-rgb) !important;
+	--ion-color-shade: var(--ion-color-rastreo-primary-shade) !important;
+	--ion-color-tint: var(--ion-color-rastreo-primary-tint) !important;
+}
+
+.ion-color-rastreo-secondary {
+	--ion-color-base: var(--ion-color-rastreo-secondary) !important;
+	--ion-color-base-rgb: var(--ion-color-rastreo-secondary-rgb) !important;
+	--ion-color-contrast: var(--ion-color-rastreo-secondary-contrast) !important;
+	--ion-color-contrast-rgb: var(--ion-color-rastreo-secondary-contrast-rgb) !important;
+	--ion-color-shade: var(--ion-color-rastreo-secondary-shade) !important;
+	--ion-color-tint: var(--ion-color-rastreo-secondary-tint) !important;
 }

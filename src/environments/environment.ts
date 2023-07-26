@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	// url: 'http://localhost/wwwroot/public/api/',
+	url: 'https://formularios.admintech.co/api/',
+	// url_storage_pdf: 'http://localhost/wwwroot/public/storage/',
+	url_storage_pdf: 'https://formularios.admintech.co/storage/',
+	mensaje_error: 'Error. Por favor revise su conexión a internet e intentelo nuevamente.'
 };
 
 /*

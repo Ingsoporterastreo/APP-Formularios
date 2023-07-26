@@ -1,0 +1,14 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="rastreo-secondary" (click)="cancel()">Cancelar</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">Firmar</ion-title>
+		<ion-buttons slot="end">
+			<ion-button color="rastreo-primary" (click)="confirm()" [strong]="true">Confirmar</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+	<canvas class="signature-pad-canvas" #canvas [width]="ancho" [height]="altura" style="touch-action: none;"></canvas>
+</ion-content>

@@ -1,0 +1,12 @@
+[
+    {
+        "icon": "home-outline",
+        "name": "Inicio",
+        "url": "/main/tabs/home"
+    },
+    {
+        "icon": "cog-outline",
+        "name": "Herramientas",
+        "url": "/main/tabs/herramientas"
+    }
+]
