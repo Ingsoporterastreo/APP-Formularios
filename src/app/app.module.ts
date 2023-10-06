@@ -12,22 +12,25 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { InterceptorService } from './services/services.index';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-	IonicStorageModule.forRoot(),
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-	{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
-  ],
-  bootstrap: [
-    AppComponent
-  ],
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		IonicModule.forRoot(),
+		AppRoutingModule,
+		HttpClientModule,
+		IonicStorageModule.forRoot(),
+	],
+	providers: [
+		{
+			provide: RouteReuseStrategy,
+			useClass: IonicRouteStrategy,
+		},
+		{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  	],
+	bootstrap: [
+		AppComponent
+	],
 })
 export class AppModule {}

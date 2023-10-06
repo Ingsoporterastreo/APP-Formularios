@@ -92,7 +92,9 @@ export class InterceptorService implements HttpInterceptor {
 						break;
 					default:
 						break;
-				}
+					}
+			} else if( error.error.message ) {
+				message = error.error.message;
 			}
 		}
 

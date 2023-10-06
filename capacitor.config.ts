@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'co.rastreo.formularios',
-  appName: 'Formularios Rastre Satelital',
+  appName: 'Formularios Rastreo Satelital',
   webDir: 'www',
   server: {
     androidScheme: 'https'

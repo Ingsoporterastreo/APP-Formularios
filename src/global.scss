@@ -46,3 +46,28 @@ ion-input.input-form {
 ion-input.input-form {
 	padding: 2px 1rem !important;
 }
+
+.scanner-activado {
+	--background: transparent !important;
+	--ion-background-color: transparent !important;
+}
+
+.scan-box {
+	border: 2px solid #FFF;
+	box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+	content: '';
+	display: block;
+	left: 50%;
+	height: 300px;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+}
+
+
+
+.ion-text-wrap .label-text-wrapper > .label-text {
+    white-space: normal;
+	line-height: 14px;
+}

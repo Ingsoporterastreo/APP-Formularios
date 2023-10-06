@@ -42,8 +42,8 @@ export class LoginPage  implements OnInit {
 	*/
 	cargarInformacionInicial() {
 		this.credenciales = {
-			email: 				'prueba@escotur.com',
-			password:           '12345',
+			email: 				null,
+			password:           null,
 		};
 
 		this._menu_controller.enable( false );
@@ -52,6 +52,7 @@ export class LoginPage  implements OnInit {
 
 	/**
 	 * Metodo que realiza el logueo del usuario en el aplicativo
+	 * Se realiza el inicio de sesión para que deba ser renovado cada 30 días, es decir, cada 30 días la sesión se vence
 	 * @name        iniciarSesion
 	 * @author      Santiago Ramírez Gaitán <santiagooo42@gmail.com>
 	 * @version     1.0.0
@@ -64,7 +65,7 @@ export class LoginPage  implements OnInit {
 			async res => {
 				await this._storage_service.set( 'x-token', res.token );
 				await this._storage_service.set( 'x-usuario', res.user );
-				const expiration_time = new Date( new Date().getTime() + (6*60*60*1000) );
+				const expiration_time = new Date( new Date().getTime() + (30*24*60*60*1000) ); // 30 días
 				await this._storage_service.set( 'x-expiration', expiration_time.toString() );
 				await this._loading_service.dismiss();
 				this._nav_controller.navigateRoot( 'main/tabs/home', {
